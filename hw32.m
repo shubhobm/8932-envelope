@@ -1,0 +1,33 @@
+%% HW3 Q2
+load Ozone.txt
+Y = Ozone(:,3:7); X = Ozone(:,1:2);
+ols = fit_OLS(X,Y); olsSE = sqrt(diag(ols.SigmaOLS,0)/ols.n);
+alpha = 0.01;
+
+%% parameter of interest is solar radiation
+XS.X1 = X(:,2); XS.X2 = X(:,1);
+[modelselectaic(XS, Y, 'penv') modelselectbic(XS, Y, 'penv') modelselectlrt(XS, Y, alpha, 'penv')] %% OUTPUT: 1 1 0
+uS = 1;
+penvS = penv(XS, Y, uS);
+[ols.betaOLS(:,2) penvS.beta1 penvS.asySE sqrt(ols.n)*penvS.beta1./penvS.asySE penvS.ratio penvS.Gamma]
+% coefficient estiamtes by OLS and coeff estimates, asymptotic SE, ratio statistic, SE
+% ratio and Gamma for partial envelope
+%     0.0117    0.0097    0.0384    1.6379    1.8033   -0.0988
+%    -0.0064   -0.0033    0.0236   -0.9146    2.5548    0.0340
+%     0.0205    0.0153    0.1041    0.9540    1.8561   -0.1562
+%     0.0952    0.0963    0.2953    2.1135    1.0067   -0.9817
+%     0.0027    0.0031    0.0167    1.1986    2.3644   -0.0315
+
+%% parameter of interest is wind speed
+XW.X1 = X(:,1); XW.X2 = X(:,2);
+[modelselectaic(XW, Y, 'penv') modelselectbic(XW, Y, 'penv') modelselectlrt(XW, Y, alpha, 'penv')] %% OUTPUT: 1 1 0
+uW = 1;
+penvW = penv(XW, Y, uW);
+[ols.betaOLS(:,1) penvW.beta1 penvW.asySE sqrt(ols.n)*penvW.beta1./penvW.asySE penvW.ratio penvW.Gamma]
+% coefficient estiamtes by OLS and coeff estimates, asymptotic SE, ratio statistic, SE
+% ratio and Gamma for partial envelope
+%    -0.1382    0.0710    0.1674    2.7481    4.5328    0.4504
+%    -0.1925   -0.0749    0.1687   -2.8771    3.9233   -0.4754
+%    -0.2113   -0.0166    0.0410   -2.6197   51.6941   -0.1051
+%    -0.7868   -0.0106    0.0256   -2.6786  127.1239   -0.0673
+%     0.0713    0.1175    0.2437    3.1235    1.7782    0.7454

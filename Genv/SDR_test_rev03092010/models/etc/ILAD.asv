@@ -1,0 +1,7 @@
+function [WX,W] = ILAD(Y,X,h)
+[WX0, W0]=ldr(y,X,'lad','cont',1,'nslices',5);
+bx=X*W0;
+bxx=bx.^2;
+B = [ones(length(bx),1) bx bxx]\X;
+
+

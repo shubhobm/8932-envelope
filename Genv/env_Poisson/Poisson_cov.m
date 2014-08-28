@@ -1,0 +1,13 @@
+function [M U] = Poisson_cov(Y,X,a,b)
+N = size(X,1);
+p = size(X,2);
+wts = exp(a + X*b);
+wts = wts./mean(wts);
+Exw = wts'*X/N;
+Sxw = (X-Exw(ones(N,1),:))'*diag(wts)*(X-Exw(ones(N,1),:))./N;
+Ys = a + X*b+(Y-exp(a + X*b))./wts;
+Eyw = wts'*Ys/N;
+Sxyw = (X-Exw(ones(N,1),:))'*diag(wts)*(Ys-Eyw(ones(N,1),:))./N;
+Syw = (Ys-Eyw(ones(N,1),:))'*diag(wts)*(Ys-Eyw(ones(N,1),:))./N;
+M = Sxw;
+U = Sxyw*Sxyw'./Syw;

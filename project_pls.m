@@ -1,0 +1,20 @@
+%% Hierarchical PLS regression
+[len wid] = size(data508);
+types = data508(1,2:wid-1);
+X = data508(2:len,2:wid-1);
+X1 = transform(X);
+
+Xts = transform(X(:,find(types==1))); Xtc = transform(X(:,find(types==2)));
+X3d = transform(X(:,find(types==3))); Xqc = transform(X(:,find(types==4)));
+
+% Xts = X(:,find(types==1)); Xtc = X(:,find(types==2));
+% X3d = X(:,find(types==3)); Xqc = X(:,find(types==4));
+
+Y1 = data508(2:len,wid); Y = (Y1-mean(Y1))/std(Y1);
+
+Xmod = [Xts Xtc X3d Xqc]; smod = size(Xmod);
+ndim = smod(2);
+[XL,yl,XS,YS,beta,PCTVAR,MSE] = plsregress(Xmod,Y1,ndim);
+plot(1:ndim,cumsum(100*PCTVAR(2,:)),'-bo');
+xlabel('Number of PLS components');
+ylabel('Percent Variance Explained in y');

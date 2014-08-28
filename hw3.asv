@@ -1,0 +1,21 @@
+%% Homework 3
+%% Q1
+load fiberpaper.dat
+Y = fiberpaper(:, 1 : 4);
+X = fiberpaper(:, [7 5 6]);
+alpha = 0.01;
+X1 = X(1, :)'; X4 = X(4, :)';
+
+X_1 = X(setdiff(1:size(X,1),1),:); Y_1 = Y(setdiff(1:size(Y,1),1),:);
+u = lrt_env(X_1, Y_1, alpha);
+ModelOutput1 = env(X_1,Y_1, u1);
+p1env = predict_env(ModelOutput1, X1, 'prediction');
+predict_env2(X_1, Y_1, X1, 'prediction');
+p1env.SE./p1penv.SE
+
+X_4 = X(setdiff(1:size(X,1),4),:); Y_4 = Y(setdiff(1:size(Y,1),4),:);
+u4 = lrt_env(X_4, Y_4, alpha);
+ModelOutput1 = env(X_4,Y_4, u4);
+p4env = predict_env(ModelOutput4, X_4, 'prediction');
+p4penv = predict_env2(X_4, Y_4, X4, 'prediction');
+p4env.SE./p4penv.SE

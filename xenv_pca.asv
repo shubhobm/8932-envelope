@@ -1,0 +1,2 @@
+function [outs] = xenv_pca_pred(X,Y,mod,Xnew)
+S1 = cov(X

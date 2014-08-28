@@ -1,0 +1,33 @@
+clear all; 
+rand('state',20130416)
+randn('state',20130416)
+p = 10; % number of predictors
+u = 3; % envelope dimension
+N = 200; % number of observations
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Envelopes basis          %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Gamma = orth(rand(p,u));
+Gamma0 = null(Gamma');
+Omega = rand(u,u);
+Omega = Omega*Omega';
+Omega0 = rand(p-u,p-u);
+Omega0 = Omega0*Omega0';
+SigmaX = Gamma*Omega*Gamma' + Gamma0*Omega0*Gamma0';
+eta = ones(u,1);
+beta = Gamma*eta;
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Poisson regression       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+X = mvnrnd(zeros(p,1),SigmaX,N);
+Xbeta = X*beta;
+mu = exp(Xbeta);    
+Y = poissrnd(mu);
+b0 = glmfit(X,Y,'poisson','link','log','constant','off');
+for(i in 1:5)
+    b
+

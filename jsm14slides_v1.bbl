@@ -1,0 +1,34 @@
+\begin{thebibliography}{1}
+
+\bibitem{cook}
+{\sc Cook, R., Li, B., and Chiaromonte, F.}
+\newblock Envelope models for parsimonious and efficient multivariate linear
+  regression.
+\newblock {\em Stat. Sinica 20\/} (2010), 927--1010.
+
+\bibitem{hawk}
+{\sc Hawkins, D., Basak, S., and Mills, D.}
+\newblock {QSAR}s for chemical mutagens from structure: ridge regression
+  fitting and diagnostics.
+\newblock {\em Environ. Toxicol. Pharmacol. 16\/} (2004), 37--44.
+
+\bibitem{supsvd}
+{\sc Li, G., Yang, D., Shen, H., and Nobel, A.}
+\newblock {S}upervised {S}ingular {V}alue {D}ecomposition and its asymptotic
+  properties.
+\newblock {\em Technometrics Submitted\/}.
+
+\bibitem{majum}
+{\sc Majumdar, S., Basak, S., and Grunwald, G.}
+\newblock Adapting interrelated two-way clustering method for {Q}uantitative
+  {S}tructure-{A}ctivity relationship ({QSAR}) modeling of mutagenicity/
+  non-mutagenicity of a diverse set of chemicals.
+\newblock {\em Curr. Comput. Aided Drug Des. 9\/} (2013), 463--471.
+
+\bibitem{crc}
+{\sc Soderman, J.}
+\newblock {\em {CRC} Handbook of Identified Carcinogens and Noncarcinogens:
+  Carcinogenicity-Mutagenicity Database}.
+\newblock CRC Press, Boca Raton, FL, 1982.
+
+\end{thebibliography}

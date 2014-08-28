@@ -1,0 +1,11 @@
+function [outs] = xenv_pca_predict(X,Y,pct,Xnew)
+[a b c] = pcacov(X);
+d = cumsum(c);
+dim = min(find(d>pct));
+loadA = a(:,1:dim);
+trX = X*loadA;
+outs.u = modelselectaic(trX,Y,'xenv');
+envmod = xenv(trX,Y,outs.u);
+outs.beta = loadA*envmod.beta;
+outs.asySE = (loadA.^2)*envmod.asySE;
+outs.tRatios = outs.beta.*sqrt(length(c))./sqrt(outs.asySE);

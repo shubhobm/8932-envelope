@@ -1,0 +1,21 @@
+function [G,H] = alter_env(Y,X,dimy,dimx,varargin)
+% G is the basis for the sigma_X envelope
+% H is the basis for the sigma_Y envelope
+% for fixed G, the objective function is same as 
+[HX,H,L,dhat] = mlm_fit(Y,X,dimy,varargin(:));
+[GY,G,L,dhat] = mlm_fit(X,Y,dimx,varargin(:));
+
+% function [GX,G,f,d] = MLM_fit(Y,X,dim,varargin)
+% Fits the envelope model and returns G = Gamma, 
+%     f= value of maximized log likelihood and d = estimate of d.
+% Set d a specific value for a preselected dimension
+% Set d to " 'lrt', .05 " to use the likelihood ratio testing criterion
+%     to estimate d with level .05
+% Setting d to 'aic' or 'bic' uses the AIC or BIC criterion.
+% ==========================================================  
+A = randn(size(Y,1),1);
+[WX,W,f,d] = ldr(A,Y,'epfc','cont',dim,'fy',X,varargin{:});
+%
+%function [WX,W,f,d] = MLM(Y,X,method,dim,varargin)
+%A = randn(size(Y,1),1);
+%[WX,W,f,d] = ldr(A,Y,method,'cont',dim,'fy',X,varargin{:});

@@ -1,0 +1,1 @@
+Fix a bug in sg_prcg, lines 67-69 and 71-74 are newly added to limit the search of solutions to a reasonable range.   Thank Guangyu for pointing this out!

@@ -1,0 +1,6 @@
+\beamer@endinputifotherversion {3.27pt}
+\select@language {english}
+\beamer@sectionintoc {1}{The data and the variables}{3}{0}{1}
+\beamer@sectionintoc {2}{Fitting Envelope models}{8}{0}{2}
+\beamer@sectionintoc {3}{Performance of envelopes in prediction}{16}{0}{3}
+\beamer@sectionintoc {4}{Conclusion}{20}{0}{4}

@@ -1,0 +1,5 @@
+predictor.type	test.type sensitivity specificity
+ts	LRT at 0.05	0.6563	0.4841
+ts	bic	0.6484	0.5119
+tc		0.6992	0.4643
+ts+tc		0.6914	0.5119
